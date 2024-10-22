@@ -1,6 +1,6 @@
 import dataclasses
 from abc import ABC
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 
 @dataclass
 class Gasoline(ABC):
@@ -22,7 +22,6 @@ class GasPortion:
         octane += other.gasoline.octane * (other.volume_liters / volume_liters)
         octane = round(octane, ndigits=2)
         return GasPortion(
-            gasoline = dataclass.replace(self.gasoline, octane=octane),
+            gasoline = replace(self.gasoline, octane=octane),
             volume_liters = volume_liters,
         )
-print(type(Gasoline))
