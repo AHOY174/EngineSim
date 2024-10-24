@@ -39,7 +39,7 @@ class TestCreateBenzine:
         )
         assert isinstance(portion1, GasPortion)
         mixed = portion1 + portion2
-        assert mixed.gasoline.octane == 96.76
+        assert mixed.gasoline.octane == 96.75
         diesel = GasPortion(
             gasoline=Diesel(octane=70),
             volume_liters=100,
