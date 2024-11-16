@@ -56,4 +56,5 @@ class Engine:
         # and acutally rotate the engine
         rotations = round(rps * seconds, ndigits=2)
         self.rotations += rotations
+        print(f"ENGINE DURING: {self.rotations}")
         return rotations

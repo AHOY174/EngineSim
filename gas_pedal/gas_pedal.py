@@ -17,7 +17,9 @@ class Pedal:
             raise ValueError("No Negitive time period allowed")
         how_hard = max(0, how_hard)
         how_hard = min(1, how_hard)
-        return self.connected_gas_pump.apply(
+        
+        return self.connected_gas_pump.pull_gas(
             voltage=12*how_hard,
             seconds=seconds,
         )
+    

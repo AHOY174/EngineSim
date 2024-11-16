@@ -20,10 +20,10 @@ class GasPump:
     connected_engine: Optional[Engine]
     max_flow_lps: float # liters per second
 
-    def apply(
-            self,
-            voltage: float,
-            seconds: float,
+    def pull_gas(
+        self,
+        voltage: float,
+        seconds: float,        
     ) -> GasPortion:
         if voltage < 0:
             raise NegativeVoltage
@@ -39,9 +39,18 @@ class GasPump:
             self.connected_gas_tank,
             volume_liters=volume
         )
+
+        return gas_portion
+    
+    def apply_gas(
+        self,
+        gas_portion: GasPortion,
+        seconds: float,  
+    ) -> float:
         if self.connected_engine is not None:
-            self.connected_engine.supply(
+            rotations = self.connected_engine.supply(
                 gas_portion=gas_portion,
                 seconds=seconds,
             )
-        return gas_portion
+        
+        return rotations

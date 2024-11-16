@@ -19,7 +19,7 @@ class TestGasPump:
             connected_engine=None,
             max_flow_lps=0.2,
         )
-        output_gas = gas_pump.apply(
+        output_gas = gas_pump.pull_gas(
             voltage=6,
             seconds=5,
         )

@@ -54,9 +54,12 @@ class TestEverythingTogether:
             connected_gas_pump=gas_pump,
         )
 
-        # STEP 6. Press a pedal and see that the rotations are increased
-        pedal.press(
+        # STEP 6. Press a pedal and see that the gas level has decreased
+        gas_portion = pedal.press(
             how_hard=0.8,
             seconds=5,
         )
+
+        # STEP 7. Apply gas to engine and see the rotations count
+        rotations = gas_pump.apply_gas(gas_portion=gas_portion, seconds=5)
         
